@@ -14,5 +14,5 @@ print("Статус заметки:", status)
 # Выводим дату без года.
 temp_created_date = created_date.split(sep='-')
 temp_issue_date = issue_date.split(sep='-')
-print(f"Дата создания заметки: {temp_created_date[0]}-1{temp_created_date[1]}")
-print(f"Дата истечения заметки: {temp_issue_date[0]}-1{temp_issue_date[1]}")
+print(f"Дата создания заметки: {temp_created_date[0]}-{temp_created_date[1]}")
+print(f"Дата истечения заметки: {temp_issue_date[0]}-{temp_issue_date[1]}")
