@@ -1,21 +1,29 @@
 # Обработка дедлайнов
 
-from datetime import datetime
 
-# Функция для проверки дедлайна
-def check_deadline(issue_date):
-    try:
-        # Преобразуем строку даты в объект datetime
-        deadline = datetime.strptime(issue_date, "%d-%m-%Y")
-        if deadline < datetime.now():
-            print("Предупреждение: срок выполнения заметки истек!")
-        else:
-            print("Срок выполнения заметки еще не истек.")
-    except ValueError:
-        print("Некорректный формат даты. Пожалуйста, используйте формат 'день-месяц-год'.")
+def check_deadline():
 
-# Запрашиваем дату истечения заметки у пользователя
-issue_date = input("Введите дату истечения заметки в формате 'день-месяц-год': ")
+    from datetime import datetime
 
-# Вызываем функцию проверки дедлайна
-check_deadline(issue_date)
+    # Запрашиваем дату истечения заметки у пользователя
+    while True:
+        issue_date = input(
+            "Введите дату истечения заметки в \
+формате 'ДД-ММ-ГГГГ': "
+        )
+        try:
+            deadline = datetime.strptime(issue_date, "%d-%m-%Y")
+            if deadline < datetime.now():
+                print("Предупреждение: срок выполнения заметки истек!")
+            else:
+                print("Срок выполнения заметки еще не истек.")
+            break  # Выход из цикла, если дата введена корректно
+        except ValueError:
+            print(
+                "Некорректный формат даты. Пожалуйста, используйте \
+формат 'ДД-ММ-ГГГГ'."
+            )
+
+
+# Запрашиваем дату истечения заметки и проверяем дедлайн
+check_deadline()
