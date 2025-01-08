@@ -24,9 +24,9 @@ for i in range(3):
 
 print("Описание заметки:", content)
 print("Статус заметки:", status)
-print("Дата создания заметки:", created_date)
-print("Дата истечения заметки:", issue_date)
 
-# дата без года
-# print('Дата создания заметки:', "-".join(created_date.split(sep="-")[:2]))
-# print('Дата истечения заметки:', "-".join(issue_date.split(sep="-")[:2]))
+# Выводим дату без года.
+print('Дата создания \
+заметки:', "-".join(created_date.split(sep="-")[:2]))
+print('Дата истечения \
+заметки:', "-".join(issue_date.split(sep="-")[:2]))
