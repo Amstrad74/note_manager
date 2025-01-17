@@ -28,6 +28,7 @@ notes = [
     }
 ]
 
+
 # Функция выбора номера заметки
 def choice_note(notes):
     while True:
@@ -43,6 +44,7 @@ def choice_note(notes):
             print("Такой заметки не существует")  # Сообщение об ошибке
         except ValueError:
             print("Введите число.")  # Обработка некорректного ввода
+
 
 # Функция для удаления заметки
 def delete_note(notes):
@@ -70,12 +72,14 @@ def delete_note(notes):
             print(Fore.RED + "Ошибка: введите число или оставьте поле пустым \
 для выхода." + Style.RESET_ALL)  # Обработка некорректного ввода
 
+
 # Основные функции для меню
 def create_new_note():
     new_note = create_note()  # Создание новой заметки
     notes.append(new_note)  # Добавление заметки в список
     print(Fore.GREEN + "Заметка создана:" + Style.RESET_ALL)
     display_note(new_note, len(notes))  # Отображение созданной заметки
+
 
 def update_existing_note():
     display_notes(notes)  # Отображение всех заметок
@@ -92,6 +96,7 @@ def update_existing_note():
         # Отображение обновленной заметки
         display_note(updated_note, note_index + 1)
 
+
 def search_notes_menu():
     found_notes = search_notes(notes)  # Поиск заметок
     if found_notes:
@@ -102,6 +107,7 @@ def search_notes_menu():
     else:
         print(Fore.RED + "Заметки, соответствующие запросу, \
 не найдены." + Style.RESET_ALL)  # Сообщение о отсутствии найденных заметок
+
 
 # Функция для отображения меню и обработки выбора пользователя
 def menu():
@@ -131,11 +137,13 @@ def menu():
 выбор. Пожалуйста, выберите действие из списка." + Style.RESET_ALL))
         action()  # Выполнение действия
 
+
 # Основная функция для запуска программы
 def main():
     print(Fore.CYAN + "Добро пожаловать в 'Менеджер \
 заметок'!" + Style.RESET_ALL)
     menu()  # Вызов функции меню
+
 
 # Точка входа
 if __name__ == "__main__":
