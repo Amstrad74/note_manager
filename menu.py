@@ -1,6 +1,5 @@
 # Импортируем необходимые модули
 from colorama import Fore, Style, init
-from datetime import datetime
 from create_note_function import create_note
 from update_note_function import update_note
 from display_notes_function import display_notes, display_note
@@ -15,7 +14,8 @@ def choice_note(notes):
     check_size = len(notes)
     while True:
         try:
-            user_input = input("Введите номер заметки, которую нужно изменить (пустой ввод для выхода): ")
+            user_input = input("Введите номер заметки, которую нужно \
+изменить (пустой ввод для выхода): ")
 
             # Если ввод пустой, выходим из функции
             if user_input.strip() == "":
@@ -36,7 +36,8 @@ def delete_note(notes):
     display_notes(notes)  # Показываем все заметки
     while True:
         user_input = input(
-            Fore.YELLOW + "Введите номер заметки для удаления (пустой ввод для выхода): " + Style.RESET_ALL)
+            Fore.YELLOW + "Введите номер заметки для удаления (пустой ввод \
+для выхода): " + Style.RESET_ALL)
 
         # Если ввод пустой, выходим из функции
         if user_input.strip() == "":
@@ -44,9 +45,12 @@ def delete_note(notes):
             return
 
         try:
-            note_index = int(user_input) - 1  # Преобразуем ввод в индекс
-            if 0 <= note_index < len(notes):  # Проверяем, что индекс в допустимых пределах
-                confirm = input(Fore.RED + "Вы уверены, что хотите удалить эту заметку? (да/нет): " + Style.RESET_ALL)
+            # Преобразуем ввод в индекс
+            note_index = int(user_input) - 1
+            # Проверяем, что индекс в допустимых пределах
+            if 0 <= note_index < len(notes):
+                confirm = input(Fore.RED + "Вы уверены, что хотите удалить \
+эту заметку? (да/нет): " + Style.RESET_ALL)
                 if confirm.lower() == 'да':
                     del notes[note_index]
                     print(Fore.GREEN + "Заметка удалена!" + Style.RESET_ALL)
@@ -57,7 +61,8 @@ def delete_note(notes):
             else:
                 print(Fore.RED + "Неверный номер заметки." + Style.RESET_ALL)
         except ValueError:  # Обработка неправильного ввода (не число)
-            print(Fore.RED + "Ошибка: введите число или оставьте поле пустым для выхода." + Style.RESET_ALL)
+            print(Fore.RED + "Ошибка: введите число или оставьте поле пустым \
+для выхода." + Style.RESET_ALL)
 
 
 # Функция для отображения меню и обработки выбора пользователя
@@ -84,12 +89,17 @@ def menu():
         elif choice == '3':
             display_notes(notes)  # Вывод всех заметок
             if len(notes):
-                note_index = choice_note(notes)  # Получаем индекс заметки для обновления
-                if note_index is not None:  # Проверяем, не был ли ввод пустым
-                    updated_note = update_note(notes[note_index])  # Обновляем заметку
-                    notes[note_index] = updated_note  # Сохраняем обновленную заметку в списке
+                # Получаем индекс заметки для обновления
+                note_index = choice_note(notes)
+                # Проверяем, не был ли ввод пустым
+                if note_index is not None:
+                    # Обновляем заметку
+                    updated_note = update_note(notes[note_index])
+                    # Сохраняем обновленную заметку в списке
+                    notes[note_index] = updated_note
                     print(Fore.GREEN + "Заметка обновлена:" + Style.RESET_ALL)
-                    display_note(updated_note, note_index + 1)  # Выводим обновленную заметку
+                    # Выводим обновленную заметку
+                    display_note(updated_note, note_index + 1)
             else:
                 print("Нет заметок для изменения")
         elif choice == '4':
@@ -102,12 +112,15 @@ def menu():
                 for i, note in enumerate(found_notes, start=1):
                     display_note(note, i)
             else:
-                print(Fore.RED + "Заметки, соответствующие запросу, не найдены." + Style.RESET_ALL)
+                print(Fore.RED + "Заметки, соответствующие запросу, \
+не найдены." + Style.RESET_ALL)
         elif choice == '6':
-            print(Fore.GREEN + "Программа завершена. Спасибо за использование!" + Style.RESET_ALL)
+            print(Fore.GREEN + "Программа завершена. Спасибо за \
+использование!" + Style.RESET_ALL)
             break
         else:
-            print(Fore.RED + "Неверный выбор. Пожалуйста, выберите действие из списка." + Style.RESET_ALL)
+            print(Fore.RED + "Неверный выбор. Пожалуйста, выберите действие \
+из списка." + Style.RESET_ALL)
 
 
 # Основная функция для запуска программы
