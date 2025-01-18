@@ -79,7 +79,7 @@ def update_note(note):
 
 
 # Пример использования функции
-def main():
+def main(note):
 
     print("Текущие данные заметки:")  # Вывод текущей заметки
     print(note)
@@ -99,4 +99,4 @@ if __name__ == "__main__":
         'issue_date': '25-06-2025'
     }
     # Запуск основной функции
-    main()
+    main(note)
