@@ -43,10 +43,10 @@ def search_notes(notes, keywords=None, status=None):
     if keywords is None and status is None:
         print(Fore.YELLOW + "Подсказка: Вы можете вводить несколько ключевых \
 слов, разделяя их запятой." + Style.RESET_ALL)
-        keywords = input(Fore.YELLOW + "Введите ключевые слова для \
-поиска (или оставьте пустым): " + Style.RESET_ALL).strip()
-        status = input(Fore.YELLOW + "Введите статус для поиска (или \
+        status = input(Fore.YELLOW + "Введите статус заметки для поиска (или \
 оставьте пустым): " + Style.RESET_ALL).strip()
+        keywords = input(Fore.YELLOW + "Введите ключевые слова для поиска \
+по остальным критериям (или оставьте пустым): " + Style.RESET_ALL).strip()
 
         # Проверка на пустые вводы
         if not keywords and not status:

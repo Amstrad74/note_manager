@@ -12,8 +12,9 @@ init(autoreset=True)
 # Функция выбора номера заметки
 def choice_note(notes):
     while True:
-        user_input = input("Введите номер заметки (пустой ввод для \
-выхода): ").strip()
+        user_input = input(
+            "Введите номер заметки (пустой ввод для выхода): "
+        ).strip()
         if not user_input:  # Проверка на пустой ввод
             print("Выход из выбора заметки.")
             return None
@@ -90,7 +91,7 @@ def search_notes_menu():
 
 
 # Функция для отображения меню и обработки выбора пользователя
-def menu():
+def menu(notes):
     actions = {
         '1': create_new_note,  # Создание новой заметки
         '2': lambda: display_notes(notes),  # Отображение всех заметок
@@ -119,10 +120,10 @@ def menu():
 
 
 # Основная функция для запуска программы
-def main():
+def main(notes):
     print(Fore.CYAN + "Добро пожаловать в 'Менеджер \
 заметок'!" + Style.RESET_ALL)
-    menu()  # Вызов функции меню
+    menu(notes)  # Вызов функции меню
 
 
 # Точка входа
@@ -148,4 +149,4 @@ if __name__ == "__main__":
         }
     ]
 
-    main()  # Запуск основной функции
+    main(notes)  # Запуск основной функции
