@@ -33,7 +33,7 @@ def update_note_status():
             print("Статус заметки успешно обновлён на:", note["status"])
             break
         elif choice == "":
-            print(f"Текущий статус заметки: {note["status"]}")
+            print(f"Текущий статус заметки: {note['status']}")
             break
         else:
             print("Некорректный ввод. Пожалуйста, выберите номер из \
