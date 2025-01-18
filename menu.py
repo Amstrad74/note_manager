@@ -8,7 +8,6 @@ from search_notes_function import search_notes
 # Инициализация colorama для автоматического сброса стилей
 init(autoreset=True)
 
-
 # Функция выбора номера заметки. Запрашивает у пользователя номер
 # заметки и возвращает индекс выбранной заметки.
 def choice_note(notes):
@@ -27,7 +26,6 @@ def choice_note(notes):
         except ValueError:
             print("Введите число.")
 
-
 # Функция для удаления заметки. Запрашивает у пользователя номер заметки
 # для удаления. Удаляет заметку, если пользователь подтверждает действие.
 def delete_note(notes):
@@ -45,19 +43,17 @@ def delete_note(notes):
         else:
             print(Fore.YELLOW + "Удаление отменено." + Style.RESET_ALL)
 
-
 # Основные функции для меню. Создает новую заметку, добавляет её в список
 # и отображает информацию о ней.
-def create_new_note():
+def create_new_note(notes):
     new_note = create_note()
     notes.append(new_note)
     print(Fore.GREEN + "Заметка создана:" + Style.RESET_ALL)
     display_note(new_note, len(notes))
 
-
 # Запрашивает у пользователя номер заметки для обновления.
 # Обновляет выбранную заметку и отображает её информацию.
-def update_existing_note():
+def update_existing_note(notes):
     display_notes(notes)
     if not notes:
         print("Нет заметок для изменения.")
@@ -69,10 +65,9 @@ def update_existing_note():
         print(Fore.GREEN + "Заметка обновлена:" + Style.RESET_ALL)
         display_note(updated_note, note_index + 1)
 
-
 # Запрашивает у пользователя критерии поиска и отображает найденные заметки.
 # Если заметки не найдены, выводит соответствующее сообщение.
-def search_notes_menu():
+def search_notes_menu(notes):
     found_notes = search_notes(notes)
     if found_notes:
         print(Fore.GREEN + "\nНайденные заметки:" + Style.RESET_ALL)
@@ -83,7 +78,6 @@ def search_notes_menu():
             Fore.RED + "Заметки, соответствующие запросу, не найдены." +
             Style.RESET_ALL
         )
-
 
 # Функция для отображения меню и обработки выбора пользователя.
 # Вызывает соответствующие функции в зависимости от выбора.
@@ -99,15 +93,15 @@ def menu(notes):
 
         choice = input(Fore.YELLOW + "Ваш выбор: " + Style.RESET_ALL)
         if choice == '1':
-            create_new_note()
+            create_new_note(notes)
         elif choice == '2':
             display_notes(notes)
         elif choice == '3':
-            update_existing_note()
+            update_existing_note(notes)
         elif choice == '4':
             delete_note(notes)
         elif choice == '5':
-            search_notes_menu()
+            search_notes_menu(notes)
         elif choice == '6':
             print(
                 Fore.GREEN +
@@ -129,7 +123,6 @@ def main(notes):
         Fore.CYAN + "Добро пожаловать в 'Менеджер заметок'!" + Style.RESET_ALL
     )
     menu(notes)
-
 
 # Точка входа
 if __name__ == "__main__":
