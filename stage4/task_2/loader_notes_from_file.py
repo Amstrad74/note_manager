@@ -8,6 +8,7 @@ def load_notes_from_file(filename):
             content = file.read().strip()
 
             if not content:  # Проверка на пустой файл
+                print(f"Файл '{filename}' пустой.")
                 return notes
 
             # Разбиваем содержимое на заметки по разделителю '---'
