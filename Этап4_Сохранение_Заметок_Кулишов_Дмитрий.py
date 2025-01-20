@@ -1,19 +1,11 @@
+import yaml
+
 # Функция для сохранения заметок в файл
 def save_notes_to_file(notes, filename):
-    file = open(filename, 'w', encoding='utf-8')  # Открываем файл
-    try:
-        for note in notes:
-            file.write(f"Имя пользователя: {note['username']}\n")
-            for title in note['titles']:
-                file.write(f"Заголовок: {title}\n")
-            file.write(f"Описание: {note['content']}\n")
-            file.write(f"Статус: {note['status']}\n")
-            file.write(f"Дата создания: {note['created_date']}\n")
-            file.write(f"Дедлайн: {note['issue_date']}\n")
-            file.write("-" * 20 + "\n")  # Разделитель между заметками
-    finally:
-        file.close()  # Закрываем файл
-
+    # Открываем файл
+    with open(filename, 'w', encoding='utf-8') as file:
+        # Сохраняем заметки в формате YAML
+        yaml.dump(notes, file, allow_unicode=True, sort_keys=False)
 
 # Основная функция для запуска программы
 def main():
@@ -46,8 +38,7 @@ def main():
     ]
 
     # Сохранение заметок в файл в формате YAML
-    save_notes_to_file(notes, 'notes.txt')
-
+    save_notes_to_file(notes, 'notes.yaml')
 
 # Точка входа
 if __name__ == "__main__":
