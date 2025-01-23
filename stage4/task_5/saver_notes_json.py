@@ -1,24 +1,13 @@
+import json
+
+
 # Сохраняет список заметок в текстовый файл
-def save_notes_to_file(notes, filename):
+def save_notes_json(notes, filename):
     try:
         # Открываем файл в режиме записи ('w'), перезаписывая его содержимое
         with open(filename, 'w', encoding='utf-8') as file:
-            for note in notes:
-                # Записываем имя пользователя
-                file.write(f"Имя пользователя: {note['username']}\n")
-
-                # Записываем все заголовки заметки
-                for title in note["titles"]:
-                    file.write(f"Заголовок: {title}\n")
-
-                # Записываем описание, статус, дату создания и дедлайн
-                file.write(f"Описание: {note['content']}\n")
-                file.write(f"Статус: {note['status']}\n")
-                file.write(f"Дата создания: {note['created_date']}\n")
-                file.write(f"Дедлайн: {note['issue_date']}\n")
-
-                # Разделитель между заметками
-                file.write("---\n")
+            # Записываем список формате json с кириллицей, с отступами
+            json.dump(notes, file, ensure_ascii=False, indent=4)
     except PermissionError:
         # Обработка ошибки доступа
         print(f"Ошибка доступа: "
@@ -26,8 +15,6 @@ def save_notes_to_file(notes, filename):
     except Exception as e:
         # Обработка всех остальных ошибок
         print(f"Ошибка при работе с файлом {filename}: {e}")
-        # Корректно завершаем выполнение программы
-        return
 
 
 # Точка входа
@@ -53,4 +40,4 @@ if __name__ == "__main__":
     ]
 
     # Вызываем функцию для сохранения заметок в файл
-    save_notes_to_file(notes, 'notes.txt')
+    save_notes_json(notes, 'notes.json')

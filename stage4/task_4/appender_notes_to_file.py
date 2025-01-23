@@ -1,8 +1,8 @@
-# Сохраняет список заметок в текстовый файл
-def save_notes_to_file(notes, filename):
+# Добавляет новые заметки в существующий файл, не удаляя старые
+def append_notes_to_file(notes, filename):
     try:
-        # Открываем файл в режиме записи ('w'), перезаписывая его содержимое
-        with open(filename, 'w', encoding='utf-8') as file:
+        # Открываем файл в режиме добавления ('a')
+        with open(filename, 'a', encoding='utf-8') as file:
             for note in notes:
                 # Записываем имя пользователя
                 file.write(f"Имя пользователя: {note['username']}\n")
@@ -30,10 +30,17 @@ def save_notes_to_file(notes, filename):
         return
 
 
+# Основная функция для запуска программы
+def main():
+
+    # Вызываем функцию для добавления новых заметок в файл
+    append_notes_to_file(notes_to_append, 'notes.txt')
+
+
 # Точка входа
 if __name__ == "__main__":
-    # Список для хранения всех заметок
-    notes = [
+    # Пример добавления новых заметок
+    notes_to_append = [
         {
             'username': 'Алексей',
             'titles': ['Список покупок'],
@@ -52,5 +59,4 @@ if __name__ == "__main__":
         }
     ]
 
-    # Вызываем функцию для сохранения заметок в файл
-    save_notes_to_file(notes, 'notes.txt')
+    main()
