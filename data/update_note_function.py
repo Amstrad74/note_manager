@@ -7,11 +7,14 @@ def input_date(prompt):
     while True:
         try:
             date_input = input(prompt)  # Запрос ввода даты
-            datetime.strptime(date_input, "%d-%m-%Y")  # Проверка формата даты
+            # Проверка формата даты
+            datetime.strptime(date_input, "%d-%m-%Y")
             return date_input  # Возврат корректно введенной даты
         except ValueError:
-            print("Некорректный формат даты. Пожалуйста, используйте \
-формат 'ДД-ММ-ГГГГ'.")
+            print(
+                "Некорректный формат даты. Пожалуйста, используйте " +
+                "формат 'ДД-ММ-ГГГГ'."
+            )
 
 
 # Функция обновления заметки
@@ -19,15 +22,18 @@ def update_note(note):
 
     # Опции для обновления
     fields = ['username', 'titles', 'content', 'status', 'issue_date']
-    print("Какие данные вы хотите обновить? Выберите номера через \
-запятую (например, 1,2):")
+    print(
+        "Какие данные вы хотите обновить? " +
+        "Выберите номера через запятую (например, 1,2):"
+    )
 
     for i, field in enumerate(fields, start=1):
         print(f"{i}. {field}")
 
     while True:
-        selected_fields = input("Введите номера полей для \
-обновления: ").strip().split(',')
+        selected_fields = input(
+            "Введите номера полей для обновления: "
+        ).strip().split(',')
         selected_fields = [
             s.strip() for s in selected_fields if s.strip().isdigit()
         ]
@@ -40,16 +46,20 @@ def update_note(note):
         for field_index in selected_fields:
             index = int(field_index) - 1
             if index < 0 or index >= len(fields):
-                print(f"Некорректный номер поля: {field_index}. Пожалуйста, \
-выберите номер от 1 до {len(fields)}.")
+                print(
+                    "Некорректный номер поля: {field_index}. " +
+                    "Пожалуйста, выберите номер от 1 до {len(fields)}."
+                )
                 continue
 
             field = fields[index]
 
             if field == 'titles':
                 new_titles = []
-                print("Введите новые заголовки заметки (оставьте пустым \
-для завершения):")
+                print(
+                    "Введите новые заголовки заметки " +
+                    "(оставьте пустым для завершения):"
+                )
                 while True:
                     title = input("Введите заголовок заметки: ")
                     if title == "":
@@ -57,19 +67,25 @@ def update_note(note):
                     new_titles.append(title)  # Добавление заголовка
                 note[field] = new_titles  # Обновление заголовков
             elif field == 'issue_date':
-                note[field] = input_date("Введите новое значение \
-для issue_date в формате 'ДД-ММ-ГГГГ': ")
+                note[field] = input_date(
+                    "Введите новое значение для issue_date " +
+                    "в формате 'ДД-ММ-ГГГГ': "
+                )
             elif field == 'status':
                 # Запрос статуса заметки с проверкой на корректный ввод
                 while True:
-                    status = input("Введите статус заметки (новая, \
-в процессе, выполнено): ").strip().lower()
+                    status = input(
+                        "Введите статус заметки " +
+                        "(новая, в процессе, выполнено): "
+                    ).strip().lower()
                     if status in ["новая", "в процессе", "выполнено"]:
                         note["status"] = status
                         break
                     else:
-                        print("Некорректный статус. Пожалуйста, \
-введите 'новая', 'в процессе' или 'выполнено'.")
+                        print(
+                            "Некорректный статус. Пожалуйста, введите " +
+                            "'новая', 'в процессе' или 'выполнено'."
+                        )
             else:
                 new_value = input(f"Введите новое значение для {field}: ")
                 note[field] = new_value  # Обновление значения

@@ -1,5 +1,6 @@
 import json
 
+
 # Загружает заметки из текстового файла и возвращает их в виде списка словарей
 def load_notes_from_file(filename):
     notes = []  # Список для хранения загруженных заметок
@@ -55,8 +56,8 @@ def load_notes_from_file(filename):
                             note[key] = value
                     else:
                         print(
-                            f"Некорректная строка в заметке: '{line}'. " 
-                            f"Пропускаем."
+                            f"Некорректная строка в заметке: '{line}'. " +
+                            "Пропускаем."
                         )
                         continue
 
@@ -81,6 +82,7 @@ def load_notes_from_file(filename):
         print(f"Произошла ошибка при загрузке файла: {e}")
 
     return notes  # Возвращаем список заметок
+
 
 # Точка входа
 if __name__ == "__main__":

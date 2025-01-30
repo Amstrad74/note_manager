@@ -55,8 +55,8 @@ def search_notes(notes, keywords=None, status=None):
     if keywords is None and status is None:
         print(
             Fore.YELLOW +
-            f"Подсказка: Вы можете вводить несколько ключевых "
-            f"слов, разделяя их запятой." + Style.RESET_ALL
+            "Подсказка: Вы можете вводить несколько ключевых " +
+            "слов, разделяя их запятой." + Style.RESET_ALL
         )
         status = input(
             Fore.YELLOW +
@@ -64,16 +64,16 @@ def search_notes(notes, keywords=None, status=None):
             Style.RESET_ALL
         ).strip()
         keywords = input(
-            Fore.YELLOW + f"Введите ключевые слова для поиска по остальным "
-                          f"критериям (или оставьте пустым): " +
+            Fore.YELLOW + "Введите ключевые слова для поиска по остальным " +
+                          "критериям (или оставьте пустым): " +
             Style.RESET_ALL
         ).strip()
 
         # Проверка на пустые вводы
         if not keywords and not status:
             print(
-                Fore.RED + f"Не введены критерии поиска. Пожалуйста, "
-                           f"введите хотя бы одно условие." +
+                Fore.RED + "Не введены критерии поиска. Пожалуйста, " +
+                           "введите хотя бы одно условие." +
                 Style.RESET_ALL
             )
             return []

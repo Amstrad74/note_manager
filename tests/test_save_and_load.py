@@ -7,8 +7,6 @@ from data.loader_notes_from_file import load_notes_from_file
 
 # Класс для тестирования функциональности управления заметками.
 class TestNoteManager(unittest.TestCase):
-
-
     def test_save_and_load_notes(self):
         # Создание тестового списка заметок
         notes = [{'username': 'Test name', 'title': 'Test Note'}]
