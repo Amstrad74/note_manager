@@ -8,8 +8,10 @@ init(autoreset=True)
 # Функция для форматирования и отображения найденных заметок
 def format_notes(notes):
     if not notes:
-        print(Fore.RED + "Заметки, соответствующие запросу, \
-не найдены." + Style.RESET_ALL)
+        print(
+            Fore.RED + "Заметки, соответствующие запросу, не найдены." +
+            Style.RESET_ALL
+        )
         return
 
     for i, note in enumerate(notes, start=1):
@@ -21,16 +23,26 @@ def format_notes(notes):
         )
         for j, title in enumerate(note["titles"], start=1):
             print(
-                Fore.LIGHTWHITE_EX + f'- Заголовок \
-заметки № {j}: {Style.BRIGHT + Fore.WHITE}{title}')
-        print(Fore.LIGHTWHITE_EX + "Описание заметки\
-: " + Style.BRIGHT + Fore.WHITE + note["content"])
-        print(Fore.LIGHTWHITE_EX + "Статус заметки\
-: " + Style.BRIGHT + Fore.WHITE + note["status"])
-        print(Fore.LIGHTWHITE_EX + 'Дата создания заметки\
-: ' + Style.BRIGHT + Fore.WHITE + note['created_date'])
-        print(Fore.LIGHTWHITE_EX + 'Дедлайн\
-: ' + Style.BRIGHT + Fore.WHITE + note['issue_date'])
+                Fore.LIGHTWHITE_EX +
+                f'- Заголовок заметки № {j}: '
+                f'{Style.BRIGHT + Fore.WHITE}{title}'
+            )
+        print(
+            Fore.LIGHTWHITE_EX + "Описание заметки: " + Style.BRIGHT +
+            Fore.WHITE + note["content"]
+        )
+        print(
+            Fore.LIGHTWHITE_EX + "Статус заметки: " + Style.BRIGHT +
+            Fore.WHITE + note["status"]
+        )
+        print(
+            Fore.LIGHTWHITE_EX + 'Дата создания заметки: ' + Style.BRIGHT +
+            Fore.WHITE + note['created_date']
+        )
+        print(
+            Fore.LIGHTWHITE_EX + 'Дедлайн: ' + Style.BRIGHT +
+            Fore.WHITE + note['issue_date']
+        )
 
 
 # Функция для поиска заметок
@@ -41,17 +53,29 @@ def search_notes(notes, keywords=None, status=None):
 
     # Если ключевые слова или статус не переданы, запрашиваем их у пользователя
     if keywords is None and status is None:
-        print(Fore.YELLOW + "Подсказка: Вы можете вводить несколько ключевых \
-слов, разделяя их запятой." + Style.RESET_ALL)
-        status = input(Fore.YELLOW + "Введите статус заметки для поиска (или \
-оставьте пустым): " + Style.RESET_ALL).strip()
-        keywords = input(Fore.YELLOW + "Введите ключевые слова для поиска \
-по остальным критериям (или оставьте пустым): " + Style.RESET_ALL).strip()
+        print(
+            Fore.YELLOW +
+            f"Подсказка: Вы можете вводить несколько ключевых "
+            f"слов, разделяя их запятой." + Style.RESET_ALL
+        )
+        status = input(
+            Fore.YELLOW +
+            "Введите статус заметки для поиска (или оставьте пустым): " +
+            Style.RESET_ALL
+        ).strip()
+        keywords = input(
+            Fore.YELLOW + f"Введите ключевые слова для поиска по остальным "
+                          f"критериям (или оставьте пустым): " +
+            Style.RESET_ALL
+        ).strip()
 
         # Проверка на пустые вводы
         if not keywords and not status:
-            print(Fore.RED + "Не введены критерии поиска. Пожалуйста, \
-введите хотя бы одно условие." + Style.RESET_ALL)
+            print(
+                Fore.RED + f"Не введены критерии поиска. Пожалуйста, "
+                           f"введите хотя бы одно условие." +
+                Style.RESET_ALL
+            )
             return []
 
     keyword_results = []
@@ -85,8 +109,10 @@ def search_notes(notes, keywords=None, status=None):
 
 # Основная функция для запуска программы
 def search_main():
-    print(Fore.CYAN + "Добро пожаловать в 'Менеджер \
-заметок'!" + Style.RESET_ALL)
+    print(
+        Fore.CYAN + "Добро пожаловать в 'Менеджер заметок'!" +
+        Style.RESET_ALL
+    )
 
     # Поиск заметок
     found_notes = search_notes(notes)
