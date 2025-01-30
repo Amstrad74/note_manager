@@ -1,15 +1,34 @@
+import json
+
 # Загружает заметки из текстового файла и возвращает их в виде списка словарей
 def load_notes_from_file(filename):
     notes = []  # Список для хранения загруженных заметок
     try:
         # Попытка открыть файл в режиме чтения ('r')
         with open(filename, 'r', encoding='utf-8') as file:
-            # Читаем содержимое файла и убираем лишние пробелы
-            content = file.read().strip()
+            # Читаем содержимое файла
+            content = file.read()
 
-            if not content:  # Проверка на пустой файл
+            if not content.strip():  # Проверка на пустой файл
                 print(f"Файл '{filename}' пустой.")
                 return notes
+
+            # Попытка загрузить данные как JSON
+            try:
+                data = json.loads(content)
+                # Проверяем, что данные являются списком
+                if isinstance(data, list):
+                    notes = data
+                    print(f"Файл '{filename}' загружен в формате JSON.")
+                    return notes
+                else:
+                    print(f"JSON файл '{filename}' не содержит список. \n"
+                          f"Попытка загрузить как пользовательский формат.")
+            except json.JSONDecodeError:
+                # Если данные не являются JSON, пытаемся загрузить их
+                # в пользовательском формате
+                print(f"Файл '{filename}' не является JSON. "
+                      f"Попытка загрузить как пользовательский формат.")
 
             # Разбиваем содержимое на заметки по разделителю '---'
             raw_notes = content.split('---')
@@ -36,7 +55,7 @@ def load_notes_from_file(filename):
                             note[key] = value
                     else:
                         print(
-                            f"Некорректная строка в заметке: '{line}'. "
+                            f"Некорректная строка в заметке: '{line}'. " 
                             f"Пропускаем."
                         )
                         continue

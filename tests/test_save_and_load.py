@@ -1,8 +1,8 @@
 import unittest  # Импорт модуля unittest для создания и запуска тестов
 
 # Импорт функций для сохранения и загрузки заметок из модуля note_manager.data
-from note_manager.data.saver_notes_json import save_notes_json
-from note_manager.data.loader_notes_from_file import load_notes_from_file
+from data.saver_notes_json import save_notes_json
+from data.loader_notes_from_file import load_notes_from_file
 
 
 # Класс для тестирования функциональности управления заметками.
