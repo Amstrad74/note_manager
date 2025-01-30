@@ -1,9 +1,9 @@
 # Импортируем необходимые модули
 from colorama import Fore, Style, init
-from create_note_function import create_note
-from update_note_function import update_note
-from display_notes_function import display_notes, display_note
-from search_notes_function import search_notes
+from data.create_note_function import create_note
+from data.update_note_function import update_note
+from data.search_notes_function import search_notes
+from interface.display_notes_function import display_notes, display_note
 
 # Инициализация colorama для автоматического сброса стилей
 init(autoreset=True)

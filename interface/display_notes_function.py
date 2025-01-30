@@ -9,22 +9,34 @@ init(autoreset=True)
 def display_note(note, index):
     print(Fore.YELLOW + "-" * 20 + Style.RESET_ALL)
     print(Style.BRIGHT + Fore.GREEN + f"Заметка №{index}:" + Style.RESET_ALL)
-    print(Fore.LIGHTWHITE_EX + "Имя пользователя\
-: " + Style.BRIGHT + Fore.WHITE + note["username"])
+    print(
+        Fore.LIGHTWHITE_EX + "Имя пользователя: " +
+        Style.BRIGHT + Fore.WHITE + note["username"]
+    )
 
     # Перебор заголовков заметки
     for j, title in enumerate(note["titles"], start=1):
-        print(Fore.LIGHTWHITE_EX + f'- \
-Заголовок № {j}: {Style.BRIGHT + Fore.WHITE}{title}')
+        print(
+            Fore.LIGHTWHITE_EX +
+            f'- Заголовок № {j}: {Style.BRIGHT + Fore.WHITE}{title}'
+        )
 
-    print(Fore.LIGHTWHITE_EX + "Описание\
-: " + Style.BRIGHT + Fore.WHITE + note["content"])
-    print(Fore.LIGHTWHITE_EX + "Статус\
-: " + Style.BRIGHT + Fore.WHITE + note["status"])
-    print(Fore.LIGHTWHITE_EX + 'Дата создания\
-: ' + Style.BRIGHT + Fore.WHITE + note['created_date'])
-    print(Fore.LIGHTWHITE_EX + 'Дедлайн\
-: ' + Style.BRIGHT + Fore.WHITE + note['issue_date'])
+    print(
+        Fore.LIGHTWHITE_EX + "Описание: " +
+        Style.BRIGHT + Fore.WHITE + note["content"]
+    )
+    print(
+        Fore.LIGHTWHITE_EX + "Статус: " +
+        Style.BRIGHT + Fore.WHITE + note["status"]
+    )
+    print(
+        Fore.LIGHTWHITE_EX + 'Дата создания: ' +
+        Style.BRIGHT + Fore.WHITE + note['created_date']
+    )
+    print(
+        Fore.LIGHTWHITE_EX + 'Дедлайн: ' +
+        Style.BRIGHT + Fore.WHITE + note['issue_date']
+    )
 
 
 # Функция для отображения всех заметок
@@ -54,14 +66,18 @@ def display_notes(notes):
 
         # Если есть еще заметки, предлагаем пользователю продолжить
         if current_page * notes_per_page < total_notes:
-            input(Fore.YELLOW + "Нажмите Enter, чтобы \
-продолжить..." + Style.RESET_ALL)
+            input(
+                Fore.YELLOW + "Нажмите Enter, чтобы продолжить..." +
+                Style.RESET_ALL
+            )
 
 
 # Основная функция для запуска программы
 def main():
-    print(Fore.CYAN + "Добро пожаловать в 'Менеджер \
-заметок'!" + Style.RESET_ALL)
+    print(
+        Fore.CYAN + "Добро пожаловать в 'Менеджер заметок'!" +
+        Style.RESET_ALL
+    )
     display_notes(notes)  # Вывод всех заметок после завершения ввода
     print(Fore.YELLOW + "-" * 20 + Style.RESET_ALL)
 
