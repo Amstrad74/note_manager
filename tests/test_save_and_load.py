@@ -11,7 +11,7 @@ class TestNoteManager(unittest.TestCase):
 
     def test_save_and_load_notes(self):
         # Создание тестового списка заметок
-        notes = [{'username': 'Test', 'title': 'Test Note'}]
+        notes = [{'username': 'Test name', 'title': 'Test Note'}]
         # Сохранение тестовых заметок в файл 'test.json'
         # с помощью функции save_notes_json
         save_notes_json(notes, 'test.json')
