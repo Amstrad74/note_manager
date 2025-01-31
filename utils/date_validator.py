@@ -14,3 +14,8 @@ def validate_date(date_str):
         # что строка не соответствует формату даты
         # Возвращаем False в этом случае
         return False
+
+# Точка входа
+if __name__ == "__main__":
+    date_str = "01-01-2025"
+    print("Тест даты\n", validate_date(date_str))
